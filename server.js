@@ -31,20 +31,27 @@ const collectibles = [
   ];
 
 app.get('/collectibles/:idx', (req, res) => {
-    let idx = req.params.idx
-    let name = collectibles[idx].name
-    let price = collectibles[idx].price
-
-        if (idx == 0) {
-        res.send(`So, you want the ${name}? For ${price}, it can be yours!`)
-        } else if (idx == 1) {
-            res.send(`So, you want the ${name}? For ${price}, it can be yours!`)
-        } else if (idx == 2) {
-            res.send(`So, you want the ${name}? For ${price}, it can be yours!`)
-        } else {
-            res.send('This item is not yet in stock. Check back soon')
-        }
+    if (req.params.idx < collectibles.length) {
+        res.send(`So, you want the ${collectibles[req.params.idx].name}? For ${req.params[idx].price}, it can be yours!`)
+    } else {
+        res.send('This item is not yet in stock. Check back soon')
+    }
 })
+
+//     let idx = req.params.idx
+//     let name = collectibles[idx].name
+//     let price = collectibles[idx].price
+
+//         if (idx == 0) {
+//         res.send(`So, you want the ${name}? For ${price}, it can be yours!`)
+//         } else if (idx == 1) {
+//             res.send(`So, you want the ${name}? For ${price}, it can be yours!`)
+//         } else if (idx == 2) {
+//             res.send(`So, you want the ${name}? For ${price}, it can be yours!`)
+//         } else {
+//             res.send('This item is not yet in stock. Check back soon')
+//         }
+// })
 
 //Question 4
 const shoes = [
@@ -77,6 +84,8 @@ app.get('/shoes', (req, res) => {
         res.send(shoes)
     }
 })
+
+
 
 app.listen(3000, () => {
     console.log('Listening on port 3000')
